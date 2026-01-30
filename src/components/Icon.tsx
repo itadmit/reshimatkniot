@@ -7,14 +7,17 @@ interface IconProps extends LucideProps {
   name: string;
 }
 
+// Type for icon components
+type IconComponent = React.ComponentType<LucideProps>;
+
 export function Icon({ name, ...props }: IconProps) {
   // Get the icon component from lucide-react
-  const IconComponent = (LucideIcons as Record<string, React.ComponentType<LucideProps>>)[name];
+  const icons = LucideIcons as unknown as Record<string, IconComponent>;
+  const IconComponent = icons[name];
   
   if (!IconComponent) {
     // Fallback to Package icon if icon not found
-    const FallbackIcon = LucideIcons.Package;
-    return <FallbackIcon {...props} />;
+    return <LucideIcons.Package {...props} />;
   }
   
   return <IconComponent {...props} />;
