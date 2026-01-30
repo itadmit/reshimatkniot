@@ -44,7 +44,8 @@ export async function GET() {
           SELECT 
             f.id,
             f.name,
-            fm.is_owner,
+            fm.role,
+            CASE WHEN fm.role = 'owner' THEN true ELSE false END as is_owner,
             f.created_at,
             (SELECT COUNT(*)::int FROM categories WHERE family_id = f.id) as categories_count,
             (SELECT COUNT(*)::int FROM products WHERE family_id = f.id) as products_count,
@@ -57,21 +58,44 @@ export async function GET() {
 
         // Get WhatsApp settings (from family where user is owner)
         let whatsappSettings = null;
-        const ownerFamily = familiesResult.rows.find(f => f.is_owner);
+        const ownerFamily = familiesResult.rows.find(f => f.role === 'owner');
         if (ownerFamily) {
-          const settingsResult = await client.query(`
-            SELECT 
-              whatsapp_api_url,
-              whatsapp_instance_id,
-              CASE WHEN whatsapp_token IS NOT NULL AND whatsapp_token != '' THEN true ELSE false END as whatsapp_token,
-              whatsapp_default_phone
-            FROM settings
-            WHERE family_id = $1
-            LIMIT 1
-          `, [ownerFamily.id]);
-          
-          if (settingsResult.rows.length > 0) {
-            whatsappSettings = settingsResult.rows[0];
+          try {
+            // Try settings table first (newer schema)
+            const settingsResult = await client.query(`
+              SELECT 
+                whatsapp_api_url,
+                whatsapp_instance_id,
+                CASE WHEN whatsapp_token IS NOT NULL AND whatsapp_token != '' THEN true ELSE false END as whatsapp_token,
+                whatsapp_default_phone
+              FROM settings
+              WHERE family_id = $1
+              LIMIT 1
+            `, [ownerFamily.id]);
+            
+            if (settingsResult.rows.length > 0) {
+              whatsappSettings = settingsResult.rows[0];
+            }
+          } catch {
+            // Fall back to family_settings table (older schema)
+            try {
+              const settingsResult = await client.query(`
+                SELECT 
+                  NULL as whatsapp_api_url,
+                  NULL as whatsapp_instance_id,
+                  false as whatsapp_token,
+                  whatsapp_number as whatsapp_default_phone
+                FROM family_settings
+                WHERE family_id = $1
+                LIMIT 1
+              `, [ownerFamily.id]);
+              
+              if (settingsResult.rows.length > 0) {
+                whatsappSettings = settingsResult.rows[0];
+              }
+            } catch {
+              // No settings table exists
+            }
           }
         }
 
