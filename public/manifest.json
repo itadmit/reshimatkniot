@@ -1,0 +1,21 @@
+{
+  "name": "רשימת קניות",
+  "short_name": "קניות",
+  "description": "אפליקציית רשימת קניות למטבח",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fefcf9",
+  "theme_color": "#ea580c",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "he",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["shopping", "lifestyle", "utilities"]
+}

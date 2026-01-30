@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <ChainId>7290027600007</ChainId>
+  <SubChainId>001</SubChainId>
+  <StoreId>001</StoreId>
+  <BikoretNo>9</BikoretNo>
+  <DllVerNo>8.0.1.3</DllVerNo>
+  <Items Count="9">
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>38000138416</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>פרינגלס אורגינל 149 גרם</ItemName>
+      <ManufacturerName>פרינגלס מנופקצ'ורינג קונ</ManufacturerName>
+      <ManufactureCountry>US</ManufactureCountry>
+      <ManufacturerItemDescription>פרינגלס אורגינל 149 גרם</ManufacturerItemDescription>
+      <UnitQty>גרמים</UnitQty>
+      <Quantity>149.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 גרם</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>13.90</ItemPrice>
+      <UnitOfMeasurePrice>9.33</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>38000138430</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>פרינגלס שמנת בצל 158 גרם</ItemName>
+      <ManufacturerName>פרינגלס מנופקצ'ורינג קונ</ManufacturerName>
+      <ManufactureCountry>US</ManufactureCountry>
+      <ManufacturerItemDescription>פרינגלס שמנת בצל 158 גרם</ManufacturerItemDescription>
+      <UnitQty>גרמים</UnitQty>
+      <Quantity>158.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 גרם</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>13.90</ItemPrice>
+      <UnitOfMeasurePrice>8.80</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>38000183713</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>פרינגלס ברביקיו 158 גרם</ItemName>
+      <ManufacturerName>פרינגלס מנופקצ'ורינג קונ</ManufacturerName>
+      <ManufactureCountry>US</ManufactureCountry>
+      <ManufacturerItemDescription>פרינגלס ברביקיו 158 גרם</ManufacturerItemDescription>
+      <UnitQty>גרמים</UnitQty>
+      <Quantity>158.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 גרם</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>13.90</ItemPrice>
+      <UnitOfMeasurePrice>8.80</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>7290013358530</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>רוטב צ'ילי מתוק 700 מ"ל</ItemName>
+      <ManufacturerName>קי.אר.אס. ספייסי פוד</ManufacturerName>
+      <ManufactureCountry>TH</ManufactureCountry>
+      <ManufacturerItemDescription>רוטב צילי מתוק 700 מ"ל</ManufacturerItemDescription>
+      <UnitQty>מיליליטרים</UnitQty>
+      <Quantity>700.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 מ"ל</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>13.90</ItemPrice>
+      <UnitOfMeasurePrice>1.99</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>7290013358547</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>רוטב צ'ילי חריף 700 מ"ל</ItemName>
+      <ManufacturerName>מסוונג רונרוג בעמ</ManufacturerName>
+      <ManufactureCountry>TH</ManufactureCountry>
+      <ManufacturerItemDescription>רוטב צילי חריף 700 מ"ל</ManufacturerItemDescription>
+      <UnitQty>מיליליטרים</UnitQty>
+      <Quantity>700.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 מ"ל</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>13.90</ItemPrice>
+      <UnitOfMeasurePrice>1.99</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>7290105439499</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>מיונז מאסטר שף 481 גרם</ItemName>
+      <ManufacturerName>רמיה סי.וי.הולנד</ManufacturerName>
+      <ManufactureCountry>NL</ManufactureCountry>
+      <ManufacturerItemDescription>מיונז מאסטר שף 481 גרם</ManufacturerItemDescription>
+      <UnitQty>גרמים</UnitQty>
+      <Quantity>481.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 גרם</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>13.90</ItemPrice>
+      <UnitOfMeasurePrice>2.89</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>7290105965516</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>ספלנדיד חלב מוס אספרס105</ItemName>
+      <ManufacturerName>שטראוס גרופ בע"מ</ManufacturerName>
+      <ManufactureCountry>IL</ManufactureCountry>
+      <ManufacturerItemDescription>ספלנדיד חלב מוס אספרס105</ManufacturerItemDescription>
+      <UnitQty>גרמים</UnitQty>
+      <Quantity>105.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 גרם</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>17.90</ItemPrice>
+      <UnitOfMeasurePrice>17.05</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 09:33</PriceUpdateDate>
+      <ItemCode>7290112841865</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>פורטובלו למילוי יחידה</ItemName>
+      <ManufacturerName>פטריות ושורשים בע"מ</ManufacturerName>
+      <ManufactureCountry>IL</ManufactureCountry>
+      <ManufacturerItemDescription>פורטובלו למילוי יחידה</ManufacturerItemDescription>
+      <UnitQty>יחידה</UnitQty>
+      <Quantity>1.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>יחידה</UnitOfMeasure>
+      <QtyInPackage>1</QtyInPackage>
+      <ItemPrice>15.90</ItemPrice>
+      <UnitOfMeasurePrice>15.90</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+    <Item>
+      <PriceUpdateDate>2026-01-30 08:00</PriceUpdateDate>
+      <ItemCode>7614500010013</ItemCode>
+      <ItemType>1</ItemType>
+      <ItemName>טובלרון חלב 100 גרם</ItemName>
+      <ManufacturerName>מונדולז</ManufacturerName>
+      <ManufactureCountry>CH</ManufactureCountry>
+      <ManufacturerItemDescription>טובלרון חלב 100 גרם</ManufacturerItemDescription>
+      <UnitQty>גרמים</UnitQty>
+      <Quantity>100.00</Quantity>
+      <bIsWeighted>0</bIsWeighted>
+      <UnitOfMeasure>100 גרם</UnitOfMeasure>
+      <QtyInPackage>0</QtyInPackage>
+      <ItemPrice>11.90</ItemPrice>
+      <UnitOfMeasurePrice>11.90</UnitOfMeasurePrice>
+      <AllowDiscount>1</AllowDiscount>
+      <ItemStatus>1</ItemStatus>
+    </Item>
+  </Items>
+</root>
