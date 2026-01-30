@@ -10,7 +10,7 @@ interface ShellProps {
 }
 
 // Pages where sidebar and navigation should be hidden
-const MINIMAL_PAGES = ['/', '/login', '/welcome'];
+const MINIMAL_PAGES = ['/', '/login', '/welcome', '/superadmin', '/superadmin/login'];
 
 export function Shell({ children }: ShellProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
