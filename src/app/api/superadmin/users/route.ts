@@ -19,55 +19,73 @@ async function isSuperAdmin(): Promise<boolean> {
 // GET - Get all users with their stats
 export async function GET() {
   try {
-    if (!await isSuperAdmin()) {
+    const isAdmin = await isSuperAdmin();
+    console.log("Is super admin:", isAdmin);
+    
+    if (!isAdmin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const client = await pool.connect();
     
     try {
-      // Get all users with their family info and stats
-      const result = await client.query(`
-        SELECT 
-          u.id,
-          u.phone,
-          u.name,
-          u.created_at,
-          (
-            SELECT json_agg(json_build_object(
-              'id', f.id,
-              'name', f.name,
-              'is_owner', fm.is_owner,
-              'created_at', f.created_at,
-              'categories_count', (SELECT COUNT(*) FROM categories WHERE family_id = f.id),
-              'products_count', (SELECT COUNT(*) FROM products WHERE family_id = f.id),
-              'list_items_count', (SELECT COUNT(*) FROM list_items WHERE family_id = f.id),
-              'members_count', (SELECT COUNT(*) FROM family_members WHERE family_id = f.id)
-            ))
-            FROM family_members fm
-            JOIN families f ON fm.family_id = f.id
-            WHERE fm.user_id = u.id
-          ) as families,
-          (
-            SELECT json_build_object(
-              'whatsapp_api_url', s.whatsapp_api_url,
-              'whatsapp_instance_id', s.whatsapp_instance_id,
-              'whatsapp_token', CASE WHEN s.whatsapp_token IS NOT NULL AND s.whatsapp_token != '' THEN true ELSE false END,
-              'whatsapp_default_phone', s.whatsapp_default_phone
-            )
-            FROM settings s
-            JOIN family_members fm ON s.family_id = fm.family_id
-            WHERE fm.user_id = u.id AND fm.is_owner = true
-            LIMIT 1
-          ) as whatsapp_settings
-        FROM users u
-        ORDER BY u.created_at DESC
+      // First, get all users
+      const usersResult = await client.query(`
+        SELECT id, phone, name, created_at
+        FROM users
+        ORDER BY created_at DESC
       `);
+
+      const users = [];
+
+      for (const user of usersResult.rows) {
+        // Get families for this user
+        const familiesResult = await client.query(`
+          SELECT 
+            f.id,
+            f.name,
+            fm.is_owner,
+            f.created_at,
+            (SELECT COUNT(*)::int FROM categories WHERE family_id = f.id) as categories_count,
+            (SELECT COUNT(*)::int FROM products WHERE family_id = f.id) as products_count,
+            (SELECT COUNT(*)::int FROM list_items WHERE family_id = f.id) as list_items_count,
+            (SELECT COUNT(*)::int FROM family_members WHERE family_id = f.id) as members_count
+          FROM family_members fm
+          JOIN families f ON fm.family_id = f.id
+          WHERE fm.user_id = $1
+        `, [user.id]);
+
+        // Get WhatsApp settings (from family where user is owner)
+        let whatsappSettings = null;
+        const ownerFamily = familiesResult.rows.find(f => f.is_owner);
+        if (ownerFamily) {
+          const settingsResult = await client.query(`
+            SELECT 
+              whatsapp_api_url,
+              whatsapp_instance_id,
+              CASE WHEN whatsapp_token IS NOT NULL AND whatsapp_token != '' THEN true ELSE false END as whatsapp_token,
+              whatsapp_default_phone
+            FROM settings
+            WHERE family_id = $1
+            LIMIT 1
+          `, [ownerFamily.id]);
+          
+          if (settingsResult.rows.length > 0) {
+            whatsappSettings = settingsResult.rows[0];
+          }
+        }
+
+        users.push({
+          ...user,
+          families: familiesResult.rows.length > 0 ? familiesResult.rows : null,
+          whatsapp_settings: whatsappSettings
+        });
+      }
 
       return NextResponse.json({ 
         success: true, 
-        users: result.rows,
-        total: result.rows.length
+        users,
+        total: users.length
       });
     } finally {
       client.release();
@@ -75,7 +93,7 @@ export async function GET() {
   } catch (error) {
     console.error("Super admin users error:", error);
     return NextResponse.json(
-      { error: "Failed to fetch users" },
+      { error: "Failed to fetch users: " + (error instanceof Error ? error.message : "Unknown error") },
       { status: 500 }
     );
   }
