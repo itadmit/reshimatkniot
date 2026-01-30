@@ -104,12 +104,12 @@ export interface AppState {
   updateProduct: (id: number, updates: Partial<Product>) => Promise<void>;
   deleteProduct: (id: number) => Promise<void>;
   
-  // Actions - List Items
-  addToList: (productId: number, qty?: number, note?: string) => Promise<void>;
-  updateListItem: (id: number, updates: Partial<ListItem>) => Promise<void>;
-  removeFromList: (id: number) => Promise<void>;
-  clearList: () => Promise<void>;
-  togglePurchased: (id: number) => Promise<void>;
+  // Actions - List Items (optimistic updates - no await needed)
+  addToList: (productId: number, qty?: number, note?: string) => void;
+  updateListItem: (id: number, updates: Partial<ListItem>) => void;
+  removeFromList: (id: number) => void;
+  clearList: () => void;
+  togglePurchased: (id: number) => void;
   
   // Actions - Settings
   updateSettings: (updates: Partial<Settings>) => Promise<void>;

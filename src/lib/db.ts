@@ -76,7 +76,8 @@ export async function getListHistory(): Promise<ListHistory[]> {
 }
 
 export async function addListHistory(history: Omit<ListHistory, "id">): Promise<number> {
-  return db.listHistory.add(history as ListHistory);
+  const id = await db.listHistory.add(history as ListHistory);
+  return id as number;
 }
 
 export async function clearListHistory(): Promise<void> {
@@ -86,7 +87,8 @@ export async function clearListHistory(): Promise<void> {
 // CRUD - Categories
 
 export async function addCategory(category: Omit<Category, "id">): Promise<number> {
-  return db.categories.add(category as Category);
+  const id = await db.categories.add(category as Category);
+  return id as number;
 }
 
 export async function updateCategory(id: number, updates: Partial<Category>): Promise<void> {
@@ -102,7 +104,8 @@ export async function deleteCategory(id: number): Promise<void> {
 // CRUD - Products
 
 export async function addProduct(product: Omit<Product, "id">): Promise<number> {
-  return db.products.add(product as Product);
+  const id = await db.products.add(product as Product);
+  return id as number;
 }
 
 export async function updateProduct(id: number, updates: Partial<Product>): Promise<void> {
@@ -118,7 +121,8 @@ export async function deleteProduct(id: number): Promise<void> {
 // CRUD - List Items
 
 export async function addListItem(item: Omit<ListItem, "id">): Promise<number> {
-  return db.listItems.add(item as ListItem);
+  const id = await db.listItems.add(item as ListItem);
+  return id as number;
 }
 
 export async function updateListItem(id: number, updates: Partial<ListItem>): Promise<void> {
@@ -196,7 +200,7 @@ export async function loadSeedData(): Promise<void> {
   const categoryIds: number[] = [];
   for (const category of SEED_CATEGORIES) {
     const id = await db.categories.add(category as Category);
-    categoryIds.push(id);
+    categoryIds.push(id as number);
   }
   
   // Add seed products with correct category IDs
@@ -434,7 +438,7 @@ export async function importShufersalData(
             icon: "Package",
             color: "var(--cat-other)",
             sortOrder: categories.length
-          } as Category);
+          } as Category) as number;
           categoryId = newCategoryId;
           categoryMap.set("אחר", newCategoryId);
         }
