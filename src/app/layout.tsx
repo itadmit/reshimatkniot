@@ -23,13 +23,48 @@ const mcFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "רשימת קניות",
-  description: "אפליקציית רשימת קניות למטבח",
+  title: "רשימת קניות | ניהול קניות משפחתי חכם",
+  description: "אפליקציית רשימת קניות משפחתית חכמה - צרו רשימות קניות משותפות, שתפו בוואטסאפ, וסנכרנו בין כל בני המשפחה בזמן אמת. חינם ופשוט לשימוש!",
   manifest: "/manifest.json",
+  metadataBase: new URL("https://kitchenlistil.vercel.app"),
+  keywords: ["רשימת קניות", "קניות", "סופר", "משפחה", "רשימה משותפת", "וואטסאפ", "shopping list", "grocery"],
+  authors: [{ name: "Kitchen List IL" }],
+  creator: "Kitchen List IL",
+  publisher: "Kitchen List IL",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "he_IL",
+    url: "https://kitchenlistil.vercel.app",
+    siteName: "רשימת קניות",
+    title: "רשימת קניות | ניהול קניות משפחתי חכם",
+    description: "צרו רשימות קניות משותפות עם כל המשפחה, שתפו בוואטסאפ בקליק, וסנכרנו בזמן אמת. חינם ופשוט!",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "רשימת קניות - אפליקציה לניהול קניות משפחתי",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "רשימת קניות | ניהול קניות משפחתי חכם",
+    description: "צרו רשימות קניות משותפות עם כל המשפחה, שתפו בוואטסאפ בקליק!",
+    images: ["/og-image.png"],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "רשימת קניות",
+  },
+  icons: {
+    icon: "/icons/icon.svg",
+    apple: "/apple-icon",
   },
 };
 
