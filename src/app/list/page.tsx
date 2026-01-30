@@ -72,17 +72,17 @@ export default function ListPage() {
   return (
     <div className="h-[calc(100vh-80px)] flex flex-col overflow-hidden">
       {/* Header with gradient background - full width */}
-      <div className={`shrink-0 w-full ${!settings.darkMode ? 'bg-gradient-to-b from-amber-100/80 to-transparent' : ''}`}>
+      <div className={`shrink-0 w-full ${!settings.darkMode ? 'bg-linear-to-b from-amber-100/80 to-transparent' : ''}`}>
         <header className="flex items-center gap-3 py-3 px-4 max-w-7xl mx-auto w-full">
           {/* Logo - right side */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="w-11 h-11 bg-primary text-primary-foreground rounded-xl flex items-center justify-center shadow-md">
-               <ShoppingCart size={24} strokeWidth={2.5} />
+            <div className="w-11 h-11 bg-[#ffbc0d] rounded-xl flex items-center justify-center shadow-md">
+               <ShoppingCart size={24} strokeWidth={2.5} className="text-[#376e4b]" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-black tracking-tight text-foreground">רשימת קניות</h1>
-              <p className="text-sm font-bold text-muted-foreground">
-                {user ? `${user.name}, מה חסר לנו בקניות?` : 'מה חסר לנו בקניות?'}
+              <h1 className="text-xl font-black tracking-tight text-[#376e4b]" style={{ fontFamily: 'var(--font-mc)' }}>רשימת קניות</h1>
+              <p className="text-sm font-bold text-[#376e4b]/70">
+                {user ? `${user.name}, מה חסר לנו?` : 'מה חסר לנו?'}
               </p>
             </div>
           </div>
