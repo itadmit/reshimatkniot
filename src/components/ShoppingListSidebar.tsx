@@ -16,7 +16,7 @@ import {
   MessageCircle,
   RefreshCw
 } from "lucide-react";
-import { shareToWhatsApp, sendListViaApi, isWhatsAppApiConfigured } from "@/lib/whatsapp";
+import { sendListViaApi } from "@/lib/whatsapp";
 import * as db from "@/lib/db";
 import type { ListHistoryItem } from "@/lib/types";
 
@@ -50,14 +50,8 @@ export function ShoppingListSidebar({ isOpen, onToggle }: ShoppingListSidebarPro
   }, []);
 
   const handleShare = () => {
-    // If WhatsApp API is configured, show the modal
-    if (isWhatsAppApiConfigured(settings)) {
-      setPhoneNumber(settings.whatsappDefaultPhone || "");
-      setShowShareModal(true);
-    } else {
-      // Fallback to direct WhatsApp link
-      shareToWhatsApp(groupedItems);
-    }
+    setPhoneNumber(settings.whatsappDefaultPhone || "");
+    setShowShareModal(true);
   };
 
   // Save list to history (both local and server)
@@ -125,13 +119,6 @@ export function ShoppingListSidebar({ isOpen, onToggle }: ShoppingListSidebarPro
     } finally {
       setIsSending(false);
     }
-  };
-
-  const handleShareDirect = async () => {
-    shareToWhatsApp(groupedItems, phoneNumber);
-    // Save to history
-    await saveToHistory(phoneNumber || undefined);
-    setShowShareModal(false);
   };
 
   const handleClear = () => {
@@ -324,26 +311,9 @@ export function ShoppingListSidebar({ isOpen, onToggle }: ShoppingListSidebarPro
                 ) : (
                   <>
                     <Send size={22} />
-                    שלח דרך API
+                    שלח בוואטסאפ
                   </>
                 )}
-              </button>
-
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-border" />
-                </div>
-                <div className="relative flex justify-center">
-                  <span className="bg-card px-3 text-sm text-muted-foreground">או</span>
-                </div>
-              </div>
-
-              <button
-                onClick={handleShareDirect}
-                className="w-full flex items-center justify-center gap-2 bg-muted hover:bg-muted/80 text-foreground py-3 rounded-xl font-medium transition-colors"
-              >
-                <Share2 size={20} />
-                פתח וואטסאפ ישירות
               </button>
             </div>
           </div>
