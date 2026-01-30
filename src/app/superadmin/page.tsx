@@ -170,12 +170,20 @@ export default function SuperAdminPage() {
           </div>
           <h1 className="text-2xl font-black text-gray-800 mb-2">גישה נדחתה</h1>
           <p className="text-gray-600 mb-6">{error}</p>
-          <button
-            onClick={() => router.push("/")}
-            className="bg-[#376e4b] text-white font-bold py-3 px-6 rounded-full hover:bg-[#2d5a3d] transition-colors"
-          >
-            חזרה לדף הבית
-          </button>
+          <div className="space-y-3">
+            <button
+              onClick={() => router.push("/superadmin/login")}
+              className="w-full bg-[#376e4b] text-white font-bold py-3 px-6 rounded-full hover:bg-[#2d5a3d] transition-colors"
+            >
+              התחבר כסופר אדמין
+            </button>
+            <button
+              onClick={() => router.push("/")}
+              className="w-full text-gray-500 font-bold py-2 hover:text-[#376e4b] transition-colors"
+            >
+              חזרה לדף הבית
+            </button>
+          </div>
         </div>
       </div>
     );
